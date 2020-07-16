@@ -3,16 +3,12 @@
  * @param {Object[]} friends
  * @return {HTMLUListElement}
  */
-function makeFriendsList(arr) {
-  let result = document.createElement('ul');
-  for (let i = 0; i < arr.length; i++) {
-    let temp = document.createElement('li');
-    temp.append(`${arr[i].fname} ${arr[i].lname}`);
-    result.append(temp)
-  }
-  return result;
+function makeFriendsList(friends) {
+  const ul = document.createElement('ul');
 
+  ul.innerHTML = friends.map(item => `
+      <li>${item.firstName} ${item.lastName}</li>
+  `).join('');
+
+  return ul;
 }
-
-
-

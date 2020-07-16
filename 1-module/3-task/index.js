@@ -4,9 +4,9 @@
  * @returns {string}
  */
 function ucFirst(str) {
-  if (!!str) {
-    return str[0].toLocaleUpperCase() + str.slice(1)
-  }
-  return ""
+  let firstLetter = str.charAt(0);
+  let firstLetterUpperCase = firstLetter.toUpperCase();
+  let otherLetters = str.slice(1);
 
+  return `${firstLetterUpperCase}${otherLetters}`;
 }

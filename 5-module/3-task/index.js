@@ -1,34 +1,48 @@
 function initCarousel() {
-  let carouselArrowLeft = document.querySelector('.carousel__arrow_left');
-  let carouselArrowRight = document.querySelector('.carousel__arrow_right');
-  let carouselInner = document.querySelector('.carousel__inner')
-  let carouselSlide = document.querySelector('.carousel__slide')
-  let wightSlides = 0;
-  let numSlides = 4;
+  let currentSlideNumber = 0;
+  let slidesAmount = 4;
+  let elem = document.querySelector('[data-carousel-holder]');
 
-  carouselArrowLeft.style.display = 'none';
-  document.addEventListener('click', function (e) {
-    if (e.target.closest('div') == carouselArrowLeft) {
-      wightSlides += carouselSlide.offsetWidth
-      if (wightSlides >= 0) {
-        wightSlides = 0;
-        carouselArrowLeft.style.display = 'none';
-        carouselArrowRight.style.display = 'flex';
-      }
-      carouselInner.style.transform = `translateX(${wightSlides}px)`
+  let carouselInnerElem = elem.querySelector('.carousel__inner');
+  let carouselArrowRight = elem.querySelector('.carousel__arrow_right');
+  let carouselArrowLeft = elem.querySelector('.carousel__arrow_left');
 
-    }
-    if (e.target.closest('div') == carouselArrowRight) {
-      wightSlides -= carouselSlide.offsetWidth
-      if (wightSlides <= -carouselSlide.offsetWidth * (numSlides - 1)) {
-        wightSlides = -carouselSlide.offsetWidth * (numSlides - 1);
-        carouselArrowRight.style.display = 'none';
-      }
-      carouselArrowLeft.style.display = 'flex';
+  update();
 
-      carouselInner.style.transform = `translateX(${wightSlides}px)`
+  elem.onclick = ({target}) => {
+    if (target.closest('.carousel__arrow_right')) {
+      next();
     }
 
-  })
+    if (target.closest('.carousel__arrow_left')) {
+      prev();
+    }
+  };
+
+  function next() {
+    currentSlideNumber++;
+    update();
+  }
+
+  function prev() {
+    currentSlideNumber--;
+    update();
+  }
+
+  function update() {
+    let offset = -carouselInnerElem.offsetWidth * currentSlideNumber;
+    carouselInnerElem.style.transform = `translateX(${offset}px)`;
+
+    if (currentSlideNumber == slidesAmount - 1) {
+      carouselArrowRight.style.display = 'none';
+    } else {
+      carouselArrowRight.style.display = '';
+    }
+
+    if (currentSlideNumber == 0) {
+      carouselArrowLeft.style.display = 'none';
+    } else {
+      carouselArrowLeft.style.display = '';
+    }
+  }
 }
-
