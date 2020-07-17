@@ -1,15 +1,16 @@
 let calculator = {
-  read: function (a, b) {
-    calculator.x = a;
-    calculator.y = b;
+  read(a, b) {
+    this.a = a;
+    this.b = b;
   },
-  sum: function () {
-    return calculator.x + calculator.y
-  },
-  mul: function () {
-    return calculator.x * calculator.y
-  }
 
+  sum() {
+    return this.a + this.b;
+  },
+
+  mul() {
+    return this.a * this.b;
+  },
 };
 
 // НЕ УДАЛЯТЬ СТРОКУ, НУЖНА ДЛЯ ПРОВЕРКИ

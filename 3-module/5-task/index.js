@@ -4,14 +4,13 @@
  * @returns {{min:number, max:number}}  объект
  */
 function getMinMax(str) {
-  let result = []
-  str = str.split(',')
-    .map(item => item.split(' ')
-      .filter(item => isFinite(item) && item != '')
-    )
-  result = result.concat(...str).sort((a, b) => b - a)
-  return {
-    min: +result[result.length - 1],
-    max: +result[0]
-  }
+  let stringWithoutSpaces = str.split(' ').join();
+  let itemsDividedByComma = stringWithoutSpaces.split(',');
+  let numbersOnly = itemsDividedByComma
+    .filter((item) => item !== '' && isFinite(item));
+
+  let max = Math.max(...numbersOnly);
+  let min = Math.min(...numbersOnly);
+
+  return {min, max};
 }

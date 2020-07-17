@@ -8,20 +8,9 @@ function print(text) {
 /**
  * Эту функцию нужно поменять так,
  * чтобы функция sayHello работала корректно
-*/
-function checkSpace(name) {
-  for (x of name) {
-    if (x == " ") {
-      return false
-    }
-  }
-  return true
-}
+ */
 function isValid(name) {
-  if (name.length >= 4 && checkSpace(name)) {
-    return true
-  }
-  return false
+  return !!name && !name.includes(' ') && name.length >= 4;
 }
 
 function sayHello() {

@@ -1,12 +1,10 @@
 /**
  * checkSpam
- * @param {string} str base
+ * @param {string} str
  * @returns {boolean}
  */
 function checkSpam(str) {
-  str = str.toLocaleLowerCase()
-  if (str.includes('1xbet') || str.includes('xxx')) {
-    return true
-  }
-  return false
+  let strLowerCase = str.toLowerCase();
+
+  return strLowerCase.includes('1xbet') || strLowerCase.includes('xxx');
 }
