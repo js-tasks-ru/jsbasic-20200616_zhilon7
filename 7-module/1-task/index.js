@@ -62,7 +62,6 @@ export default class RibbonMenu {
       let scrollLeft = sliderInnerElem.scrollLeft
       if (scrollLeft == '0') {
         sliderlArrowLeft.style.display = 'none';
-        console.log(scrollLeft)
       } else {
         sliderlArrowLeft.style.display = 'flex';
       }
