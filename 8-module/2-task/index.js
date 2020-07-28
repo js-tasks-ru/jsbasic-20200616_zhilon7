@@ -33,12 +33,10 @@ export default class ProductGrid {
 
     Object.assign(this.filters, filters);
     this.filterSoups = this.products.filter(item => this.filters.noNuts != item.nuts || !this.filters.noNuts)
-      .filter(item => ((this.filters.vegeterianOnly || this.filters.vegetarian) && item.vegeterian) || !this.filters.vegeterianOnly)
+      .filter(item => this.filters.vegeterianOnly && item.vegeterian || !this.filters.vegeterianOnly)
       .filter(item => this.filters.maxSpiciness >= item.spiciness || !this.filters.maxSpiciness)
       .filter(item => this.filters.category === item.category || !this.filters.category);
-    if (this.filterSoups) {
-      this.addItemCards(this.filterSoups);
-    }
+    this.addItemCards(this.filterSoups);
   }
 
 }
