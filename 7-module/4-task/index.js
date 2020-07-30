@@ -3,6 +3,7 @@ import createElement from '../../assets/lib/create-element.js';
 export default class StepSlider {
   constructor({ steps, value = 0 }) {
     this.steps = steps;
+
     this.segments = steps - 1;
     this.render();
 
@@ -38,8 +39,7 @@ export default class StepSlider {
     if (this.sub('step-active')) {
       this.sub('step-active').classList.remove('slider__step-active');
     }
-
-    this.sub('steps').children[this.value].classList.add('slider__step-active');
+    this.sub('steps').children[this.value].classList.add('slider__step-active')
   }
 
   addEventListeners() {
