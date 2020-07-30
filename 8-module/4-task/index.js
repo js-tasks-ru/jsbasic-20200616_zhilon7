@@ -166,7 +166,6 @@ export default class Cart {
   onSubmit(event) {
     event.preventDefault()
     let form = document.forms[0];
-    console.log(this.cartItems)
     fetch('https://httpbin.org/post', {
       method: 'POST',
       body: new FormData(form)
